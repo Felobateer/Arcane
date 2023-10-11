@@ -19,6 +19,7 @@ import "../../public/logo.PNG";
 import { RootState } from "../redux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { toggle } from "../redux/booleanSlice";
+import Link from "next/link";
 
 const pages = ["Home", "Friends", "Games"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -85,9 +86,13 @@ const Navbar = () => {
                 }}
               >
                 {pages.map((page) => (
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
+                  <Link key={page} href={`/${page}`}>
+                    <button onClick={handleCloseNavMenu}>
+                      <MenuItem>
+                        <Typography textAlign="center">{page}</Typography>
+                      </MenuItem>
+                    </button>
+                  </Link>
                 ))}
               </Menu>
             </Box>
@@ -112,13 +117,15 @@ const Navbar = () => {
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  {page}
-                </Button>
+                <Link key={page} href={`/${page}`}>
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: "white", display: "block" }}
+                  >
+                    {page}
+                  </Button>
+                </Link>
               ))}
             </Box>
 
