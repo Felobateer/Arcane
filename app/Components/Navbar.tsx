@@ -85,11 +85,13 @@ const Navbar = () => {
                   display: { xs: "block", md: "none" },
                 }}
               >
-                {pages.map((page) => (
-                  <Link key={page} href={`/${page}`}>
+                {pages.map((page, index) => (
+                  <Link key={page} href={index === 0 ? "/" : `/${page}`}>
                     <button onClick={handleCloseNavMenu}>
                       <MenuItem>
-                        <Typography textAlign="center">{page}</Typography>
+                        <Typography textAlign="center">
+                          {index === 0 ? "Home" : page}
+                        </Typography>
                       </MenuItem>
                     </button>
                   </Link>
@@ -116,8 +118,8 @@ const Navbar = () => {
               Arcane
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) => (
-                <Link key={page} href={`/${page}`}>
+              {pages.map((page, index) => (
+                <Link key={page} href={index === 0 ? "/" : `/${page}`}>
                   <Button
                     key={page}
                     onClick={handleCloseNavMenu}
