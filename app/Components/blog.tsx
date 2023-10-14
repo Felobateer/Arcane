@@ -3,7 +3,15 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-function Blog({ title, date, content, pic, profileImage }) {
+interface BlogProps {
+  title: string;
+  date: string;
+  content: string | null;
+  pic: string | null;
+  profileImage: string;
+}
+
+const Blog = ({ title, date, content, pic, profileImage }: BlogProps) => {
   return (
     <Container
       maxWidth="sm"
@@ -22,13 +30,13 @@ function Blog({ title, date, content, pic, profileImage }) {
           {title}
         </Typography>
         <Typography variant="subtitle2" color="textSecondary" gutterBottom>
-          {date}
+          {date.toLocaleString()}
         </Typography>
         <Typography variant="body1">{content}</Typography>
-        <img src={pic} alt="post picture" />
+        {typeof pic === "string" ? <img src={pic} alt="post picture" /> : null}
       </Paper>
     </Container>
   );
-}
+};
 
 export default Blog;

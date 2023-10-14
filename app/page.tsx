@@ -3,7 +3,7 @@ import Navbar from "./Components/Navbar";
 import Blog from "./Components/blog";
 import FriendsList from "./Components/friendsList";
 import Post from "./Components/post";
-import { Grid } from "@mui/material";
+import { Grid, Box } from "@mui/material";
 import postArray from "./server and data/Posts.json";
 import Footer from "./Components/footer";
 
@@ -30,7 +30,18 @@ export default function Home() {
             ))}
           </Grid>
           <Grid item xs={4}>
-            <FriendsList friends={posts} />
+            <Box
+              sx={{
+                position: "fixed",
+                bottom: 0,
+                right: 1,
+                height: "400px",
+                maxWidth: 300,
+                overflowY: "scroll",
+              }}
+            >
+              <FriendsList />
+            </Box>
           </Grid>
         </Grid>
       </main>

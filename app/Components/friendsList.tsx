@@ -11,20 +11,14 @@ import {
   Paper,
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import type { FriendType } from "../server and data/friendsType";
+import postArray from "../server and data/Posts.json";
 
-const FriendsList = ({ friends }) => {
+const FriendsList = () => {
+  const friends = postArray;
+
   return (
-    <TableContainer
-      sx={{
-        position: "fixed",
-        bottom: 0,
-        right: 1,
-        height: "400px",
-        maxWidth: 300,
-        overflowY: "scroll",
-      }}
-      component={Paper}
-    >
+    <TableContainer component={Paper}>
       <Table
         sx={{
           minWidth: 150,
@@ -41,7 +35,7 @@ const FriendsList = ({ friends }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {friends.map((friend: any) => (
+          {friends.map((friend) => (
             <TableRow
               key={friend.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
