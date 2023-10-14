@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 
-function Blog() {
+function Blog({ title, date, content, pic, profileImage }) {
   return (
     <Container
       maxWidth="sm"
@@ -17,13 +17,15 @@ function Blog() {
         elevation={3}
         style={{ margin: "10px", padding: "20px", marginBottom: "20px" }}
       >
+        <img src={profileImage} alt="profile image" />
         <Typography variant="h4" gutterBottom>
-          title
+          {title}
         </Typography>
         <Typography variant="subtitle2" color="textSecondary" gutterBottom>
-          date
+          {date}
         </Typography>
-        <Typography variant="body1">content</Typography>
+        <Typography variant="body1">{content}</Typography>
+        <img src={pic} alt="post picture" />
       </Paper>
     </Container>
   );
