@@ -14,7 +14,7 @@ import Footer from "../Components/footer";
 import FriendsList from "../Components/friendsList";
 import Chat from "../Components/chat";
 
-const friendList = () => {
+const friends = () => {
   return (
     <>
       <Navbar />
@@ -32,4 +32,4 @@ const friendList = () => {
   );
 };
 
-export default friendList;
+export default friends;
