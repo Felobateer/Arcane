@@ -2,10 +2,14 @@
 
 import React from "react";
 import { Typography } from "@mui/material";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/footer";
 const Games = () => {
   return (
     <>
-      <Typography variant="h1">Games</Typography>
+      <Navbar />
+
+      <Footer />
     </>
   );
 };
