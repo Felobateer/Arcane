@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 import java.util.Timer;
 
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Scene;
@@ -18,8 +19,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     
-    private static final int Perferred_Width = 600;
-    private static final int Perferred_Height = 500;
+    private static final int Perferred_Width = 1200;
+    private static final int Perferred_Height = 800;
     private static final int Radius = 5;
     final int x[] = new int[game_units];
     final int y[] = new int[game_units];
@@ -40,10 +41,17 @@ public class Main extends Application {
 
     private void newSnake() {
 
-        SnakeHead = new Rectangle(Perferred_Width/2, Perferred_Height/2, size, size);
+        int initialX = Perferred_Width / 2;
+    int initialY = Perferred_Height / 2;
+
+    // Initialize the snake at the center of the screen
+    x[0] = initialX;
+    y[0] = initialY;
+
+        SnakeHead = new Rectangle(x[0], y[0], size, size);
         SnakeHead.setFill(Color.BLACK);
 
-        SnakeBody = new Rectangle(SnakeHead.getX() + size , SnakeHead.getY(), size, size);
+        SnakeBody = new Rectangle(SnakeHead.getX() + ( size * score) , SnakeHead.getY(), size, size);
         SnakeBody.setFill(Color.GRAY);
 
         SnakeTail = new Polygon(
@@ -113,31 +121,32 @@ public class Main extends Application {
     newSnake();
     running = true;
 
-    new Thread(() -> {
-        while (running) {
-            move();
-            checkApple();
-            checkCollisions();
-            try {
-                Thread.sleep(speed);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+    AnimationTimer gameLoop = new AnimationTimer() {
+        @Override
+        public void handle(long now) {
+            if (running) {
+                move();
+                checkApple();
+                checkCollisions();
+                newSnake(); // Make sure to redraw the snake in the game loop
+            } else {
+                
+                Platform.runLater(() -> gameOver());
             }
         }
-        Platform.runLater(() -> gameOver());
-    }).start();
+    };
+
+    gameLoop.start();
 }
 
+
+
 public void gameOver() {
-    // Stop the game and show a game over message
     running = false;
     
-    // Implement your game over logic here
     Platform.runLater(() -> {
-        // Clear the screen
         root.getChildren().clear();
         
-        // Display the game over message
         Text gameOverText = new Text("Game Over");
         gameOverText.setFont(Font.font("Arial", FontWeight.BOLD, 48));
         gameOverText.setFill(Color.RED);
