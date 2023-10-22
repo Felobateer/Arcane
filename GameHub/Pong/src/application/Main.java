@@ -19,7 +19,7 @@ import javafx.util.Duration;
 
 
 
-public class Pong extends Application {
+public class Main extends Application {
 	//variable
 	private static final int width = 800;
 	private static final int height = 600;
