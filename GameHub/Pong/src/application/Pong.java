@@ -2,6 +2,7 @@ package application;
 	
 
 
+
 import java.util.Random;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -41,7 +42,7 @@ public class Pong extends Application {
 	
 	@Override
     public void start(Stage stage) {
-        stage.setTitle("P O N G");
+        stage.setTitle("pong");
         Canvas canvas = new Canvas(width, height);
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
