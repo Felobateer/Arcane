@@ -1,0 +1,7 @@
+{
+  "Snake": "../../GameHub/Snake/src/snake/Main.java",
+  "Chess": "../../GameHub/Chess/demo/src/main/java/com/example/App.java",
+  "Pong": "../../GameHub/Pong/src/application/Pong.java",
+  "Memory": "../../GameHub/Memory/src/application/Memory.java",
+  "TicTacToe": "../../GameHub/TicTacToe/src/application/TicTacToe.java"
+}
