@@ -7,6 +7,7 @@ import java.util.Random;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import snake.Main.Dir;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -46,6 +47,9 @@ public class Main extends Application {
 	}
 
 	public void start(Stage primaryStage) {
+		WebView webView = new WebView();
+		webView.getEngine().load("http://localhost:3000/Games/snake");
+
 		try {
 			newFood();
 
