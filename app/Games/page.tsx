@@ -15,7 +15,7 @@ const Games = () => {
     "Memory",
     "Tic Tac Toe",
   ]);
-  const [game, setGame] = useState<string>("Hello");
+  const [gameName, setGameName] = useState<string>("");
 
   const OpenGame = (gameName: string) => {
     switch (gameName) {
@@ -24,13 +24,62 @@ const Games = () => {
           .then((res) => res.blob())
           .then((gameData) => {
             setGameOn(true);
-
+            setGameName("snake");
             console.log(gameData);
           })
           .catch((error) => {
             console.error("Error fetching the game:", error);
           });
         break;
+      case "pong":
+        fetch("http://localhost:3000/Games/pong")
+          .then((res) => res.blob())
+          .then((gameData) => {
+            setGameOn(true);
+            setGameName("pong");
+            console.log(gameData);
+          })
+          .catch((error) => {
+            console.error("Error fetching the game:", error);
+          });
+        break;
+      case "chess":
+        fetch("http://localhost:3000/Games/chess")
+          .then((res) => res.blob())
+          .then((gameData) => {
+            setGameOn(true);
+            setGameName("chess");
+            console.log(gameData);
+          })
+          .catch((error) => {
+            console.error("Error fetching the game:", error);
+          });
+        break;
+      case "memory":
+        fetch("http://localhost:3000/Games/memory")
+          .then((res) => res.blob())
+          .then((gameData) => {
+            setGameOn(true);
+            setGameName("memory");
+            console.log(gameData);
+          })
+          .catch((error) => {
+            console.error("Error fetching the game:", error);
+          });
+        break;
+      case "Tic Tac Toe":
+        fetch("http://localhost:3000/Games/TicTacToe")
+          .then((res) => res.blob())
+          .then((gameData) => {
+            setGameOn(true);
+            setGameName("Tic Tac Toe");
+            console.log(gameData);
+          })
+          .catch((error) => {
+            console.error("Error fetching the game:", error);
+          });
+        break;
+      default:
     }
   };
   return (
@@ -39,7 +88,7 @@ const Games = () => {
       <Typography variant="h2" sx={{ margin: "1rem" }}>
         Games
       </Typography>
-      {gameOn ? <GamePlatform game={game} /> : null}
+      {gameOn ? <GamePlatform game={game} gameName={gameName} /> : null}
       <Container
         sx={{
           width: "95%",
