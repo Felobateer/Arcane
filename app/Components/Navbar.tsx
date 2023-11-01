@@ -21,7 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggle } from "../redux/booleanSlice";
 import Link from "next/link";
 
-const pages = ["Home", "Friends", "Games"];
+const pages = ["Home", "Friends", "Games", "Videos"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {

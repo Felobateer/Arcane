@@ -10,16 +10,16 @@ import Typography from "@mui/material/Typography";
 import DownloadButton from "./downloadBtn";
 
 interface GameCardProps {
-  gameName: string;
-  onGameStart: (gameName: string) => void;
+  Title: string;
+  onStart: (gameName: string) => void;
 }
 
-const GameCard: React.FC<GameCardProps> = ({ gameName, onGameStart }) => {
+const SCard: React.FC<GameCardProps> = ({ Title, onStart }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {gameName}
+          {Title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           Lizards are a widespread group of squamate reptiles, with over 6,000
@@ -27,7 +27,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameName, onGameStart }) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button onClick={() => onGameStart(gameName)} size="small">
+        <Button onClick={() => onStart(Title)} size="small">
           Play
         </Button>
       </CardActions>
@@ -35,4 +35,4 @@ const GameCard: React.FC<GameCardProps> = ({ gameName, onGameStart }) => {
   );
 };
 
-export default GameCard;
+export default SCard;
